@@ -57,27 +57,43 @@ print("Class weights:", class_weight)
 def build_model(input_shape, num_classes):
     return models.Sequential([
         layers.Input(input_shape),
-
-        # ---- Data augmentation
+        
+        # Augmentation
         layers.RandomFlip("horizontal"),
         layers.RandomRotation(0.1),
         layers.RandomZoom(0.1),
 
-        # ---- Convolutions
-        layers.Conv2D(32, 3, activation="relu", padding="same"),
+        # Bloc 1
+        layers.Conv2D(32, 3, padding="same"),
+        layers.BatchNormalization(),
+        layers.Activation("relu"),
         layers.MaxPool2D(2),
 
-        layers.Conv2D(64, 3, activation="relu", padding="same"),
+        # Bloc 2
+        layers.Conv2D(64, 3, padding="same"),
+        layers.BatchNormalization(),
+        layers.Activation("relu"),
         layers.MaxPool2D(2),
 
-        layers.Conv2D(128, 3, activation="relu", padding="same"),
+        # Bloc 3
+        layers.Conv2D(128, 3, padding="same"),
+        layers.BatchNormalization(),
+        layers.Activation("relu"),
         layers.MaxPool2D(2),
 
-        # ---- Classique
-        layers.Flatten(),
+        # Bloc 4
+        layers.Conv2D(256, 3, padding="same"),
+        layers.BatchNormalization(),
+        layers.Activation("relu"),
+        layers.MaxPool2D(2),
+
+        # Tête de classification
+        layers.GlobalAveragePooling2D(),
+        layers.Dense(256, activation="relu"),
         layers.Dropout(0.5),
-        layers.Dense(64, activation="relu"),
         layers.Dense(num_classes, activation="softmax")
+    ])
+
     ], name="emotion_cnn")
 
 model = build_model(INPUT_SHAPE, NUM_CLASSES)
