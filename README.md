@@ -42,29 +42,3 @@ emotion-face-app/
 ├── .gitignore                 # 🙈 Fichiers/dossiers à ignorer
 └── LICENSE                    # 📄 (optionnel) Licence open source
 ```
-
----
-
-## 💡 Pourquoi cette structure est optimale ?
-
-| Dossier/Fichier    | Utilité                                                           |
-| ------------------ | ----------------------------------------------------------------- |
-| `data/`            | Sépare les données brutes des données traitées + rapports         |
-| `src/`             | Tous les modules Python centralisés (réutilisables/testables)     |
-| `app/`             | Interface utilisateur (Streamlit ou Flask)                        |
-| `models/`          | Pour conserver les poids de vos entraînements                     |
-| `tests/`           | Préparer le projet à l’industrialisation avec des tests unitaires |
-| `notebooks/`       | Expérimentation sans polluer le core code                         |
-| `requirements.txt` | Pour partage/installation rapide de l’environnement               |
-
----
-
-### 🔄 Tu peux relier cette structure directement avec Trello :
-
-Sprint Carte Trello liée à
-Sprint 1 data/, notebooks/01-exploration.ipynb
-Sprint 2 src/data_loader.py, src/preprocessing.py
-Sprint 3 src/model.py, src/train.py, src/evaluate.py, models/
-Sprint 4 src/face_detection.py, src/emotion_detector.py
-Sprint 5 app/streamlit_app.py
-Sprint 6 README.md, tests/, streamlit_app.py finalisé
