@@ -1,1 +1,1 @@
-
+EMOVISION est une application de vision par ordinateur conçue pour détecter et interpréter les émotions humaines à partir de flux vidéo en temps réel ou d'images statiques. Le projet exploite des techniques avancées de Deep Learning, en particulier les réseaux de neurones convolutifs (CNN), pour analyser les expressions faciales et en extraire les sentiments dominants (joie, tristesse, colère, surprise, peur, etc.).
